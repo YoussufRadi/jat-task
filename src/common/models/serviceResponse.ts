@@ -22,11 +22,11 @@ export class ServiceResponse<T = null> {
     this._message = value;
   }
 
-  private _responseObject: T;
-  public get data(): T {
+  _responseObject: T;
+  public get responseObject(): T {
     return this._responseObject;
   }
-  public set data(value: T) {
+  public set responseObject(value: T) {
     this._responseObject = value;
   }
 
@@ -50,6 +50,6 @@ export const ServiceResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
   z.object({
     success: z.boolean(),
     message: z.string(),
-    data: dataSchema.optional(),
+    responseObject: dataSchema.optional(),
     statusCode: z.number(),
   });

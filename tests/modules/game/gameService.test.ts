@@ -104,7 +104,7 @@ describe('gameService', () => {
       const result = gameService.switchBusy();
       expect(gameService.available).toBe(!initialAvailability);
       expect(result.statusCode).toBe(StatusCodes.LOCKED);
-      expect(result.data).toEqual({ available: !initialAvailability });
+      expect(result.responseObject).toEqual({ available: !initialAvailability });
     });
   });
 
@@ -113,7 +113,7 @@ describe('gameService', () => {
       gameService.available = true;
       const result = gameService.isBusy();
       expect(result.statusCode).toBe(StatusCodes.OK);
-      expect(result.data).toEqual({ available: true });
+      expect(result.responseObject).toEqual({ available: true });
       expect(result.message).toBe("Let's play");
     });
 
@@ -121,7 +121,7 @@ describe('gameService', () => {
       gameService.available = false;
       const result = gameService.isBusy();
       expect(result.statusCode).toBe(StatusCodes.LOCKED);
-      expect(result.data).toEqual({ available: false });
+      expect(result.responseObject).toEqual({ available: false });
       expect(result.message).toBe('Sorry I am out of reach at the moment');
     });
   });

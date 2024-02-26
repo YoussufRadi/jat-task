@@ -21,6 +21,6 @@ export const setPlayerBusyMiddleware = (_req: Request, res: Response) => {
 
 export const checkPlayerIsNotBusyMiddleware = (_req: Request, res: Response, next: NextFunction) => {
   const serviceResponse = gameService.isBusy();
-  if (!serviceResponse.data.available) handleServiceResponse(serviceResponse, res);
+  if (!serviceResponse.responseObject.available) handleServiceResponse(serviceResponse, res);
   else next();
 };

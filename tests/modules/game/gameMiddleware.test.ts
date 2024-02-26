@@ -25,7 +25,7 @@ describe('gameMiddleware', () => {
 
   describe('startGameMiddleware', () => {
     it('should call gameService.start and handleServiceResponse', () => {
-      const mockServiceResponse = { status: 'Success', data: {}, message: 'OK' };
+      const mockServiceResponse = { status: 'Success', responseObject: {}, message: 'OK' };
       (gameService.start as jest.Mock).mockReturnValue(mockServiceResponse);
 
       startGameMiddleware(req as Request, res as Response);
@@ -37,7 +37,7 @@ describe('gameMiddleware', () => {
 
   describe('playGameMiddleware', () => {
     it('should call gameService.play and handleServiceResponse', () => {
-      const mockServiceResponse = { status: 'Success', data: {}, message: 'OK' };
+      const mockServiceResponse = { status: 'Success', responseObject: {}, message: 'OK' };
       (gameService.play as jest.Mock).mockReturnValue(mockServiceResponse);
 
       playGameMiddleware(req as Request, res as Response);
@@ -49,7 +49,7 @@ describe('gameMiddleware', () => {
 
   describe('setPlayerBusyMiddleware', () => {
     it('should call gameService.switchBusy and handleServiceResponse', () => {
-      const mockServiceResponse = { status: 'Success', data: {}, message: 'OK' };
+      const mockServiceResponse = { status: 'Success', responseObject: {}, message: 'OK' };
       (gameService.switchBusy as jest.Mock).mockReturnValue(mockServiceResponse);
 
       setPlayerBusyMiddleware(req as Request, res as Response);
@@ -61,7 +61,7 @@ describe('gameMiddleware', () => {
 
   describe('checkPlayerIsNotBusyMiddleware', () => {
     it('should call gameService.isBusy, handleServiceResponse, and next if player is not busy', () => {
-      const mockServiceResponse = { status: 'Success', data: { available: true }, message: 'OK' };
+      const mockServiceResponse = { status: 'Success', responseObject: { available: true }, message: 'OK' };
       (gameService.isBusy as jest.Mock).mockReturnValue(mockServiceResponse);
       const next = jest.fn();
 
@@ -73,7 +73,7 @@ describe('gameMiddleware', () => {
     });
 
     it('should call gameService.isBusy and handleServiceResponse if player is busy', () => {
-      const mockServiceResponse = { status: 'Success', data: { available: false }, message: 'OK' };
+      const mockServiceResponse = { status: 'Success', responseObject: { available: false }, message: 'OK' };
       (gameService.isBusy as jest.Mock).mockReturnValue(mockServiceResponse);
       const next = jest.fn();
 
