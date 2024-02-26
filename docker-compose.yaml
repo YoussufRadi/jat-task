@@ -1,12 +1,20 @@
 version: '3.9'
 services:
-  backend-app:
+  player-one:
     build:
       context: .
-      dockerfile: local.Dockerfile
-    command: '/app/scripts/docker/local-run.sh'
+      dockerfile: Dockerfile
     ports:
       - '8080:8080'
-    env_file: .env
+    env_file: player1.env
+    volumes:
+      - './src:/app/src'
+  player-two:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8081:8081'
+    env_file: player2.env
     volumes:
       - './src:/app/src'

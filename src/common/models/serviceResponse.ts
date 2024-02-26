@@ -6,10 +6,10 @@ export enum ResponseStatus {
 }
 
 export class ServiceResponse<T = null> {
-  success: boolean;
-  message: string;
-  responseObject: T;
-  statusCode: number;
+  public success: boolean;
+  public message: string;
+  public responseObject: T;
+  public statusCode: number;
 
   constructor(status: ResponseStatus, message: string, responseObject: T, statusCode: number) {
     this.success = status === ResponseStatus.Success;

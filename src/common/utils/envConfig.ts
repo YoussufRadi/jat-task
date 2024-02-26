@@ -1,6 +1,6 @@
 export const getPort = () => getEnvVar<number>('PORT', 'number');
 export const getNodeEnv = () => getEnvVar<string>('NODE_ENV', 'string');
-export const getCorsOrigin = () => getEnvVar<string>('CORS_ORIGIN', 'string');
+export const getPlayerUuid = () => getEnvVar<string>('PLAYER_UUID', 'string');
 
 export function getEnvVar<T extends string | number>(key: string, type: 'string' | 'number'): T {
   const value = process.env[key];

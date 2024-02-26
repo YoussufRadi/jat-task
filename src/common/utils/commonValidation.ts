@@ -1,10 +1,7 @@
 import { z } from 'zod';
 
 export const commonValidations = {
-  id: z
-    .string()
-    .refine((data) => !isNaN(Number(data)), 'ID must be a numeric value')
-    .transform(Number)
-    .refine((num) => num > 0, 'ID must be a positive number'),
-  // ... other common validations
+  validPlay: z.number().refine((num) => num == 0 || num == 1 || num == -1, 'Number must be a valid play'),
+  numberGreaterThanOne: z.number().refine((num) => num > 1, 'Number must be greater than 1'),
+  uuid: z.string().uuid(),
 };
