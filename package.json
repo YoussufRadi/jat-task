@@ -55,7 +55,10 @@
     "typescript": "^5.3.3"
   },
   "lint-staged": {
-    "**/*.{ts,js,json}": ["npm run lint", "npm run format"],
+    "**/*.{ts,js,json}": [
+      "npm run lint",
+      "npm run format"
+    ],
     "src/**/*.{ts,js,json}": "npm run format",
     "tests/**/*.{ts,js,json}": "npm run format"
   },

@@ -77,11 +77,11 @@ Developed to streamline backend development, this boilerplate is your solution f
 ├── modules
 │   ├── healthCheck
 │   │   └── healthCheckRouter.ts
-│   └── user
-│       ├── userModel.ts
-│       ├── userRepository.ts
-│       ├── userRouter.ts
-│       └── userService.ts
+│   └── game
+│       ├── gameModel.ts
+│       ├── gameRepository.ts
+│       ├── gameRouter.ts
+│       └── gameService.ts
 └── server.ts
 
 9 directories, 17 files

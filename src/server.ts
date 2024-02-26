@@ -10,8 +10,8 @@ import errorHandler from '@common/middleware/errorHandler';
 import rateLimiter from '@common/middleware/rateLimiter';
 import requestLogger from '@common/middleware/requestLogger';
 import { getCorsOrigin } from '@common/utils/envConfig';
+import { gameRouter } from '@modules/game/gameRouter';
 import { healthCheckRouter } from '@modules/healthCheck/healthCheckRouter';
-import { userRouter } from '@modules/user/userRouter';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -25,13 +25,14 @@ const corsOrigin = getCorsOrigin();
 app.use(cors({ origin: [corsOrigin], credentials: true }));
 app.use(helmet());
 app.use(rateLimiter);
+app.use(express.json());
 
 // Request logging
 app.use(requestLogger());
 
 // Routes
 app.use('/health-check', healthCheckRouter);
-app.use('/users', userRouter);
+app.use('/games', gameRouter);
 
 // Swagger UI
 app.use(openAPIRouter);
