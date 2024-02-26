@@ -18,25 +18,25 @@ const calculatePlayAndScore = (score: number): PlayResult => {
 };
 
 export const gameRepository = {
-  exists: (playerUuid: string): boolean => games[playerUuid] != undefined,
-  find: (playerUuid: string): number => games[playerUuid]!,
-  start: (playerUuid: string, score: number): boolean => {
-    if (gameRepository.exists(playerUuid)) return false;
-    games[playerUuid] = score;
+  exists: (gameUuid: string): boolean => games[gameUuid] != undefined,
+  find: (gameUuid: string): number => games[gameUuid]!,
+  start: (gameUuid: string, score: number): boolean => {
+    if (gameRepository.exists(gameUuid)) return false;
+    games[gameUuid] = score;
     return true;
   },
-  play: (playerUuid: string): PlayResult => {
-    const score = gameRepository.find(playerUuid);
+  play: (gameUuid: string): PlayResult => {
+    const score = gameRepository.find(gameUuid);
     const { play, newScore } = calculatePlayAndScore(score);
-    games[playerUuid] = newScore;
+    games[gameUuid] = newScore;
     return { play, newScore };
   },
-  updateScore: (playerUuid: string, score: number): boolean => {
-    const oldScore = gameRepository.find(playerUuid);
+  updateScore: (gameUuid: string, score: number): boolean => {
+    const oldScore = gameRepository.find(gameUuid);
     if (oldScore == 1) return false;
     const { newScore } = calculatePlayAndScore(oldScore);
     if (newScore != score) return false;
-    games[playerUuid] = newScore;
+    games[gameUuid] = newScore;
     return true;
   },
 };

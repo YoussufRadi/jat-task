@@ -10,14 +10,20 @@
 
 ### Step 2: ⚙️ Environment Configuration
 
-- Create `.env`: Copy `.env.template` to `.env`
-- Update `.env`: Fill in necessary environment variables
+- You need to have `node`, `typescript`, `Docker` and `jq` installed to run this project
 
 ### Step 3: 🏃‍♂️ Running the Project
 
 - Development Mode: `npm run dev`
 - Building: `npm run build`
 - Production Mode: `npm run start` or `npm run docker:start`
+
+
+### Step 4: Simulation
+
+- The project runs with two players on ports 8080 and 8081
+- You can use the swagger UI to test api manually through http://localhost:8080/ and http://localhost:8081/
+- you can also run the script `./scripts/simulate.sh` to run a bash simulation that will play a game between both players
 
 ## 📁 Project Structure
 ```
@@ -51,8 +57,12 @@
 
 ```
 
-## 🤝 Feedback and Contributions
+### Notes and thoughts
 
-We'd love to hear your feedback and suggestions for further improvements. Feel free to contribute and join us in making backend development cleaner and faster!
+During the project, I relied on informed assumptions to guide my decisions. Utilizing an Express template, I initiated the project to expedite the implementation of service responses and handlers, integrating my project concept with an existing boilerplate.
 
-🎉 Happy coding!
+To commence a game, both players must register the gameUuid via the /start API endpoint, enabling subsequent game play. This approach accommodates the possibility of multiple players engaging concurrently, ensuring fair play without risk of cheating.
+
+For efficient management of game instances, I employed an in-memory object, deeming a database setup excessive for this scale of project. Basic validations and tests were implemented to maintain integrity.
+
+To observe functionality, execute the ./simulate.sh script and utilize the Swagger UI to designate one player as busy, observing the script's behavior as it continuously calls the designated player until a response is received.
