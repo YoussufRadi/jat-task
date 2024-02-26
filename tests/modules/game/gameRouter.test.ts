@@ -23,7 +23,7 @@ describe('Game API Endpoints', () => {
         .send({ gameUuid: 'b5e92176-7f9e-4b3a-83fa-68c4e2d3566c', score: 56 });
       const responseBody: ServiceResponse<GameResultResponse> = response.body;
       expect(response.statusCode).toEqual(StatusCodes.OK);
-      expect(responseBody._responseObject).toEqual({ newScore: 19, play: 1, win: false });
+      expect(responseBody.responseObject).toEqual({ newScore: 19, play: 1, win: false });
     });
 
     it('should return non available when gameService.available is false', async () => {
@@ -73,7 +73,7 @@ describe('Game API Endpoints', () => {
         .send({ gameUuid: 'b5e92176-7f9e-4b3a-83fa-68c4e2d3566a', score: 6 });
       const responseBody: ServiceResponse<GameResultResponse> = response.body;
       expect(response.statusCode).toEqual(StatusCodes.OK);
-      expect(responseBody._responseObject).toEqual({ newScore: 2, play: 0, win: false });
+      expect(responseBody.responseObject).toEqual({ newScore: 2, play: 0, win: false });
     });
 
     it('should return non available when gameService.available is false', async () => {
